@@ -496,7 +496,7 @@ const Admin: React.FC = () => {
 </div>
 <div className="mb-4">
   <label className="block mb-2">Embed Code</label>
-  <h5 className='text-red-500 italic text-xs font-bold'>Spotify (height: 120, width: 100%) and SoundCloud (height: 78, width: 100%)—To add a new link, first delete the existing one. The music title in red contains embedded links. If a latest date is added, it cannot be edited. To modify the date, remove the embedded music link and add it again. You can only add an embed link once. If you want to change it, delete the previous one and add a new one. Keep in mind the latest issue.</h5>
+  <h5 className='text-red-500 italic text-xs font-bold'>Spotify (height: 120, width: 100%) and SoundCloud (height: 78, width: 100%)—To add a new link, first delete the existing one. The music title in red contains embedded links. If a latest date is added, it cannot be edited. To modify the date, remove the embedded music link and add it again. You can only add an embed link once. If you want to change it, delete the previous one and add a new one. Keep in mind the latest issue ,for embeded links only keep date befor the todays date.</h5>
   <textarea
     value={newMusic.embedCode}
     onChange={(e) => setNewMusic({ ...newMusic, embedCode: e.target.value })}

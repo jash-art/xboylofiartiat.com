@@ -5,9 +5,10 @@ import { Play, X } from 'lucide-react';
 interface MusicPlayerProps {
   embedCode?: string;
   embedType?: 'spotify' | 'soundcloud';
+  isFeatured?: boolean;
 }
 
-const MusicPlayer: React.FC<MusicPlayerProps> = ({ embedCode, embedType }) => {
+const MusicPlayer: React.FC<MusicPlayerProps> = ({ embedCode, embedType, isFeatured }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [position, setPosition] = useState({ x: window.innerWidth / 2 - 150, y: window.innerHeight - 120 });
   const [isDragging, setIsDragging] = useState(false);

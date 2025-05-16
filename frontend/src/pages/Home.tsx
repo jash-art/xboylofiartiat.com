@@ -163,8 +163,8 @@ const Home: React.FC = () => {
         <p className='italic text-white py-32 pr-26'>"Myself isn't Loud.Me is Music.Intution is the only Listener"</p>
       </div>
                         <MusicPlayer 
-        embedCode={latestMusic[0]?.embedCode} 
-        embedType={latestMusic[0]?.embedType}
+        embedCode={featuredMusic[0]?.embedCode || latestMusic[0]?.embedCode} 
+        embedType={featuredMusic[0]?.embedType || latestMusic[0]?.embedType}
       />
     
     </>

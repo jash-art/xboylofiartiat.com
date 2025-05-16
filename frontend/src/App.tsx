@@ -26,6 +26,7 @@ function AppContent() {
         <Route path="/music" element={<Music />} />
         <Route path="/about" element={<About />} />
         <Route path="/jashad" element={<Admin />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </AnimatePresence>
     </MusicProvider>
