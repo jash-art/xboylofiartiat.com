@@ -29,7 +29,9 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
+        console.log('Fetching profile from:', `${apiUrl}/api/profile`);
         const res = await axios.get(`${apiUrl}/api/profile`);
+        console.log('Profile response status:', res.status);
         setProfile(res.data);
       } catch (error) {
         console.error('Error fetching profile:', error);
@@ -38,11 +40,14 @@ const Home: React.FC = () => {
 
     const fetchMusic = async () => {
       try {
+        console.log('Fetching featured music from:', `${apiUrl}/status/featured`);
         const featuredRes = await axios.get(`${apiUrl}/status/featured`);
+        console.log('Featured music response status:', featuredRes.status);
         setFeaturedMusic(featuredRes.data);
         
-
+        console.log('Fetching latest music from:', `${apiUrl}/status/latest`);
         const latestRes = await axios.get(`${apiUrl}/status/latest`);
+        console.log('Latest music response status:', latestRes.status);
         setLatestMusic(latestRes.data);
       } catch (error) {
         console.error('Error fetching music:', error);

@@ -58,7 +58,9 @@ const Admin: React.FC = () => {
     setIsLoading(true);
     const token = localStorage.getItem('adminToken');
     const headers = { Authorization: `Bearer ${token}` };
+    console.log('Fetching featured music from:', `${apiUrl}/status/featured`);
     const response = await axios.get(`${apiUrl}/status/featured`, { headers });
+    console.log('Featured music response status:', response.status);
     
     // Ensure that the response data is an array
     const musicData = Array.isArray(response.data) ? response.data : [];
@@ -79,10 +81,14 @@ const Admin: React.FC = () => {
       setIsLoading(true);
       const token = localStorage.getItem('adminToken');
       const headers = { Authorization: `Bearer ${token}` };
+      console.log('Fetching data from:', `${apiUrl}/api/music`);
+      console.log('Fetching profile from:', `${apiUrl}/api/profile`);
       const [musicRes, profileRes] = await Promise.all([
         axios.get(`${apiUrl}/api/music`),
         axios.get(`${apiUrl}/api/profile`)
       ]);
+      console.log('Music response status:', musicRes.status);
+      console.log('Profile response status:', profileRes.status);
       const sortedMusic = [...musicRes.data].sort((a, b) =>
         new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
       );
@@ -118,7 +124,10 @@ const Admin: React.FC = () => {
       console.log('Attempting login with URL:', `${apiUrl}/api/admin/login`);
       console.log('Login payload:', { username, password });
       console.log('Full request URL:', `${apiUrl}/api/admin/login`);
+      console.log('Environment API URL:', apiUrl);
       const res = await axios.post(`${apiUrl}/api/admin/login`, { username, password });
+      console.log('Login response status:', res.status);
+      console.log('Login response data:', res.data);
       console.log('Login response:', res.data);
       console.log('Response headers:', res.headers);
       console.log('Response status:', res.status);
