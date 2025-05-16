@@ -128,5 +128,17 @@ app.put('/api/profile', authenticateAdmin, async (req, res) => {
   }
 });
 
+// Root route to check server status
+app.get('/', (req, res) => {
+  try {
+
+    res.json({ status: 'Server is running', timestamp: new Date() });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
