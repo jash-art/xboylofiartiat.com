@@ -39,19 +39,39 @@ const Admin: React.FC = () => {
   }, []);
 
 
+  // const fetchFeaturedMusic = async () => {
+  //   try {
+  //     setIsLoading(true);
+  //     const token = localStorage.getItem('adminToken');
+  //     const headers = { Authorization: `Bearer ${token}` };
+  //     const response = await axios.get(`${apiUrl}/status/featured`, { headers });
+  //     setFeaturedMusic(response.data);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     setIsLoading(false);
+  //     console.error('Error fetching featured music:', error);
+  //   }
+  // };
+
   const fetchFeaturedMusic = async () => {
-    try {
-      setIsLoading(true);
-      const token = localStorage.getItem('adminToken');
-      const headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get(`${apiUrl}/status/featured`, { headers });
-      setFeaturedMusic(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      console.error('Error fetching featured music:', error);
-    }
-  };
+  try {
+    setIsLoading(true);
+    const token = localStorage.getItem('adminToken');
+    const headers = { Authorization: `Bearer ${token}` };
+    const response = await axios.get(`${apiUrl}/status/featured`, { headers });
+    
+    // Ensure that the response data is an array
+    const musicData = Array.isArray(response.data) ? response.data : [];
+    setFeaturedMusic(musicData);
+    
+    setIsLoading(false);
+  } catch (error) {
+    setIsLoading(false);
+    console.error('Error fetching featured music:', error);
+    // Set featuredMusic to an empty array in case of an error
+    setFeaturedMusic([]);
+  }
+};
 
 
   const fetchData = async () => {
@@ -285,6 +305,28 @@ const Admin: React.FC = () => {
           <div className="bg-white/5 backdrop-blur-sm border-t border-white/10 p-6 rounded-lg mb-8">
             <h2 className="text-xl mb-4">Featured Music</h2>
             <div className="grid grid-cols-2 gap-4">
+  {featuredMusic.length > 0 ? (
+    featuredMusic.map((release, idx) => (
+      <div key={idx} className="p-4 bg-white/10 rounded flex items-center gap-4">
+        {release.coverImage && (
+          <img
+            src={release.coverImage}
+            alt={release.title}
+            className="w-16 h-16 object-cover rounded"
+          />
+        )}
+        <div>
+          <h3 className={`font-bold ${release.embedCode ? 'text-red-500' : ''}`}>{release.title}</h3>
+          <p className="text-sm text-gray-400">{release.releaseDate}</p>
+          <p className="text-sm text-gray-400 mt-1">{release.description}</p>
+        </div>
+      </div>
+    ))
+  ) : (
+    <p>No featured music available</p>
+  )}
+</div>
+            {/* <div className="grid grid-cols-2 gap-4">
               {featuredMusic.map((release, idx) => (
                 <div key={idx} className="p-4 bg-white/10 rounded flex items-center gap-4">
                   {release.coverImage && (
@@ -301,7 +343,7 @@ const Admin: React.FC = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
 
