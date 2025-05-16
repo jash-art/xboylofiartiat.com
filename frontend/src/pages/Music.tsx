@@ -42,12 +42,12 @@ const Music: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="mb-8"
             >
-              <p className="text-gray-100 mb-8">
-                Here you'll find all my music releases. Each release represents a unique mood and atmosphere, crafted with care to provide the perfect soundtrack for studying, relaxing, or simply enjoying.
+              <p className="text-gray-100 mb-8 font-['Press_Start_2P'] text-xl tracking-wider">
+               LOFI SPOT
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {releases.map((release, index) => (
                 <motion.div
                   key={release.id}

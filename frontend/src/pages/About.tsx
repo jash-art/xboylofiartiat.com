@@ -8,7 +8,7 @@ import { div } from 'framer-motion/client';
 
 const About: React.FC = () => {
   return (
-<div className="relative h-screen w-screen md:h-full bg-[#f8f5ec] bg-[url(https://c4.wallpaperflare.com/wallpaper/636/709/249/pixel-art-sea-beach-rocks-wallpaper-preview.jpg)] bg-cover   ">
+<div className="relative min-h-screen w-screen bg-[#f8f5ec] bg-[url(https://c4.wallpaperflare.com/wallpaper/636/709/249/pixel-art-sea-beach-rocks-wallpaper-preview.jpg)] bg-cover bg-center">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -23,7 +23,7 @@ const About: React.FC = () => {
         </NavLink>
       </motion.div>
       <PageLayout section={pageSections.about[0]}>
-       <div className="bg-white/5 backdrop-blur-sm border-t border-white/10 p-16 rounded-3xl">
+       <div className="bg-white/5 backdrop-blur-sm border-t border-white/10 p-8 md:p-16 rounded-3xl  h-[80vh] md:h-auto overflow-y-auto">
          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -31,7 +31,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="md:col-span-1"
           >
-            <div className="bg-gray-100 aspect-square mb-4 rounded-lg overflow-hidden">
+            <div className="bg-gray-100 aspect-square mb-4 rounded-lg overflow-hidden max-w-[200px] mx-auto md:max-w-none">
               <img 
                 src="/profile.gif" 
                 alt="Artist portrait" 
